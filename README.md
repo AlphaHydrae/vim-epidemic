@@ -48,8 +48,8 @@ For GitHub repositories, the `username/repo` part is sufficient:
 Or you can manually edit the configuration file:
 
 ```ruby
-install "tpope/vim-fugitive"
-install "git://github.com/tpope/vim-rails.git"
+add "tpope/vim-fugitive"
+add "git://github.com/tpope/vim-rails.git"
 ```
 
 ## License (MIT)
