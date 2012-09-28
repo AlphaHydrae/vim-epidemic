@@ -9,21 +9,17 @@ module VimEpidemic
 
     def info options = {}
       load_config!
-      puts "\n#{banner}\n\n"
-      if @config.plugins.any?
-        @config.plugins.each do |plugin|
-          puts "   #{plugin}"
-        end
-      else
-        puts "No plugins installed."
-      end
-      puts
+      show_info
     end
 
     def update options = {}
       check_requirements!
       load_config!
       puts "\n#{banner}\n"
+      if @config.empty?
+        puts "\nNothing to update.\n\n"
+        exit 0
+      end
       successful = true
       @config.plugins.each do |plugin|
         puts
@@ -45,7 +41,32 @@ module VimEpidemic
       puts
     end
 
+    def add args, options = {}
+      load_config!
+      unless @config.has? *args
+        @config.touch unless @config.exists?
+        File.open(@config.file, 'a') do |f|
+          f.write %|install "#{args.first}"|
+        end
+        @config.install *args
+      end
+      show_info
+    end
+
     private
+
+    def show_info
+      puts "\n#{banner}\n\n"
+      if @config.plugins.any?
+        @config.plugins.each do |plugin|
+          puts "   #{Paint[plugin.to_s, plugin.installed? ? :green : :yellow]}"
+        end
+      else
+        puts Paint[%|No plugins registered.|, :yellow]
+        puts %|Run "vim-epidemic add <REPO>" to register one.|
+      end
+      puts
+    end
 
     def banner
       String.new.tap do |s|
@@ -54,7 +75,7 @@ module VimEpidemic
         if @config.exists?
           s << @config.file
         else
-          s << %|none (create one by running "vim-epidemic config")|
+          s << %|none|
         end
         s << "\nbundles: #{@config.bundle_dir}"
       end

@@ -12,6 +12,10 @@ module VimEpidemic
       @block = block
     end
 
+    def match? *args
+      complete_source(args.first) == complete_source
+    end
+
     def install
       if File.exists? dir
         Dir.chdir dir
@@ -24,7 +28,7 @@ module VimEpidemic
     end
 
     def to_s
-      Paint["#{name} (#{complete_source})", installed? ? :green : :yellow]
+      "#{name} (#{complete_source})"
     end
 
     def installed?
@@ -41,11 +45,11 @@ module VimEpidemic
       complete_source.sub(/.*\//, '').sub(/\.git\Z/, '')
     end
 
-    def complete_source
-      if @source.match /\Agit\:\/\//
-        @source
+    def complete_source source = @source
+      if source.match /\Agit\:\/\//
+        source
       else
-        "git://github.com/#{@source}.git"
+        "git://github.com/#{source}.git"
       end
     end
   end

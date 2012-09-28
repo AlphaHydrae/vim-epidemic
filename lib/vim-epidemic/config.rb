@@ -1,3 +1,4 @@
+require 'fileutils'
 
 module VimEpidemic
 
@@ -7,6 +8,18 @@ module VimEpidemic
     def initialize
       @plugins = []
       @home = File.expand_path '~'
+    end
+
+    def touch
+      FileUtils.touch file
+    end
+
+    def has? *args
+      @plugins.find{ |p| p.match? *args }
+    end
+
+    def empty?
+      @plugins.empty?
     end
 
     def install *args, &block

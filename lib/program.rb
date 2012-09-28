@@ -23,5 +23,13 @@ command :update do |c|
   end
 end
 
+command :add do |c|
+  c.syntax = 'vim-epidemic add <REPO>'
+  c.description = 'Adds a plugin repository to install (run "update" to install)'
+  c.action do |args, options|
+    controller.add args, options
+  end
+end
+
 default_command :info
 
