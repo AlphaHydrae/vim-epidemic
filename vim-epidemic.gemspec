@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "vim-epidemic"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["AlphaHydrae"]
@@ -31,8 +31,12 @@ Gem::Specification.new do |s|
     "bin/vim-epidemic",
     "lib/program.rb",
     "lib/vim-epidemic.rb",
+    "lib/vim-epidemic/config.rb",
+    "lib/vim-epidemic/controller.rb",
+    "lib/vim-epidemic/plugin.rb",
     "spec/helper.rb",
-    "spec/version_spec.rb"
+    "spec/version_spec.rb",
+    "vim-epidemic.gemspec"
   ]
   s.homepage = "http://github.com/AlphaHydrae/vim-epidemic"
   s.licenses = ["MIT"]
@@ -46,6 +50,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<paint>, ["~> 0.8.5"])
       s.add_runtime_dependency(%q<commander>, ["~> 4.1.2"])
+      s.add_runtime_dependency(%q<which_works>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
@@ -57,6 +62,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<paint>, ["~> 0.8.5"])
       s.add_dependency(%q<commander>, ["~> 4.1.2"])
+      s.add_dependency(%q<which_works>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
@@ -69,6 +75,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<paint>, ["~> 0.8.5"])
     s.add_dependency(%q<commander>, ["~> 4.1.2"])
+    s.add_dependency(%q<which_works>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
