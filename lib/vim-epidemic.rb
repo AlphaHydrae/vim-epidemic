@@ -4,7 +4,7 @@ require 'which_works'
 require 'fileutils'
 
 module VimEpidemic
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
 end
 
 [ :config, :controller, :plugin ].each do |lib|
