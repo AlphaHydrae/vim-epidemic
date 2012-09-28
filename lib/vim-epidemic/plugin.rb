@@ -23,7 +23,9 @@ module VimEpidemic
       else
         Dir.chdir @config.bundle_dir
         `git clone #{complete_source} #{name}`
+        Dir.chdir dir if $? == 0
       end
+      call_block if $? == 0
       $? == 0
     end
 
@@ -36,6 +38,10 @@ module VimEpidemic
     end
 
     private
+
+    def call_block
+      @block.call if @block
+    end
 
     def dir
       File.join @config.bundle_dir, name

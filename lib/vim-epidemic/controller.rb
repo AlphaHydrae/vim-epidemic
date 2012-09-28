@@ -46,7 +46,7 @@ module VimEpidemic
       unless @config.has? *args
         @config.touch unless @config.exists?
         File.open(@config.file, 'a') do |f|
-          f.write %|install "#{args.first}"|
+          f.write %|\ninstall "#{args.first}"|
         end
         @config.install *args
       end
