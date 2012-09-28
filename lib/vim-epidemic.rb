@@ -1,6 +1,7 @@
 # encoding: UTF-8
 require 'paint'
 require 'which_works'
+require 'fileutils'
 
 module VimEpidemic
   VERSION = '0.0.2'

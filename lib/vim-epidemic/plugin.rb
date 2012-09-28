@@ -1,4 +1,3 @@
-require 'uri'
 
 module VimEpidemic
 
@@ -17,6 +16,7 @@ module VimEpidemic
     end
 
     def install
+      FileUtils.mkdir_p @config.bundle_dir
       if File.exists? dir
         Dir.chdir dir
         `git pull`
