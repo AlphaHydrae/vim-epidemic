@@ -5,6 +5,7 @@ source "http://rubygems.org"
 
 gem 'paint', '~> 0.8.5'
 gem 'commander', '~> 4.1.2'
+gem 'which_works'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
