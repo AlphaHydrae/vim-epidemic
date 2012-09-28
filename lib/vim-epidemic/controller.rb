@@ -48,7 +48,7 @@ module VimEpidemic
         File.open(@config.file, 'a') do |f|
           f.write %|\ninstall "#{args.first}"|
         end
-        @config.install *args
+        @config.add *args
       end
       show_info
     end

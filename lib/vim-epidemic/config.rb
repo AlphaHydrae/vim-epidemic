@@ -21,7 +21,7 @@ module VimEpidemic
       @plugins.empty?
     end
 
-    def install *args, &block
+    def add *args, &block
       @plugins << Plugin.new(self, *args, block)
     end
 
