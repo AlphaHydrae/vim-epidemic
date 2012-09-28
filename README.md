@@ -12,7 +12,7 @@ Downloads vim plugins and installs them into the pathogen.vim bundle directory.
     # install/update registered plugins
     vim-epidemic update
 
-**v0.0.3: at the moment, epidemic.vim only supports plugins in the form of git repositories.**
+**v0.0.4: at the moment, epidemic.vim only supports plugins in the form of git repositories.**
 
 ## Requirements
 
